@@ -1,7 +1,7 @@
 "use client";
 
 import { FocusTrap } from "focus-trap-react";
-import { KeyboardEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Product } from "../types/products";
 
 type Props = {
