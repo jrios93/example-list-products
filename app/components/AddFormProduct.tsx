@@ -14,12 +14,11 @@ export const AddFormProduct = ({ closeModal, onProductAdded }: Props) => {
   const [price, setPrice] = useState<number | "">("");
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    const handleEsc = (e) => {
+    const handleEsc = (e: WindowEventMap["keydown"]) => {
       if (e.key === "Escape") {
         closeModal();
       }
     };
-
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
   }, [closeModal]);
