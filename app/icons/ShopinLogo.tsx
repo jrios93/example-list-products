@@ -1,3 +1,4 @@
+import { SVGProps } from "react";
 export default function MaterialSymbolsShoppingBasketSharp(
   props: SVGProps<SVGSVGElement>
 ) {

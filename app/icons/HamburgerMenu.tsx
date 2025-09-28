@@ -1,3 +1,4 @@
+import { SVGProps } from "react";
 export default function SolarHamburgerMenuLinear(
   props: SVGProps<SVGSVGElement>
 ) {
