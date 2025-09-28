@@ -14,7 +14,7 @@ export const AddFormProduct = ({ closeModal, onProductAdded }: Props) => {
   const [price, setPrice] = useState<number | "">("");
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
+    const handleEsc = (e: globalThis.KeyboardEvent) => {
       if (e.key === "Escape") {
         closeModal();
       }
