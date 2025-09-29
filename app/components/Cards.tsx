@@ -1,6 +1,3 @@
-import Image from "next/image";
-import CartIcon from "../icons/CartIcon";
-import HearthIcon from "../icons/HearthIcon";
 import ImageNotIcon from "../icons/ImageNotIcon";
 
 interface CardProps {

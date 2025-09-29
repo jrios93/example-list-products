@@ -1,7 +1,3 @@
-import CartIcon from "../icons/CartIcon";
-import HamburgerMenu from "../icons/HamburgerMenu";
-import HearthIcon from "../icons/HearthIcon";
-import LoginIcon from "../icons/LoginIcon";
 import ShopinLogo from "../icons/ShopinLogo";
 
 const Nav = () => {
