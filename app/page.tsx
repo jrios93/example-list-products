@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import { ViewProducts } from "./views/ViewProducts";
 import { Product } from "./types/products";
 import { Categorie } from "./types/categories";
+import { ProductExternal } from "./types/productExternal";
 
 export default function Page() {
   const [filter, setFilter] = useState("");
@@ -23,16 +24,18 @@ export default function Page() {
       );
       const externalData = await resExternal.json();
 
-      const externalProducts: Product[] = externalData.map((p: any) => ({
-        id: p.id,
-        name: p.title,
-        price: p.price,
-        image:
-          p.images && p.images.length > 0
-            ? p.images[0].replace(/["[\]]/g, "")
-            : p.category?.image?.replace(/["[\]]/g, "") ?? undefined,
-        categories: p.category.name,
-      }));
+      const externalProducts: Product[] = externalData.map(
+        (p: ProductExternal) => ({
+          id: p.id,
+          name: p.title,
+          price: p.price,
+          image:
+            p.images && p.images.length > 0
+              ? p.images[0].replace(/["[\]]/g, "")
+              : p.category?.image?.replace(/["[\]]/g, "") ?? undefined,
+          categories: p.category.name,
+        })
+      );
 
       const resCategories = await fetch(
         "https://api.escuelajs.co/api/v1/categories"
