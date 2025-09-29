@@ -1,21 +1,37 @@
 import Buttons from "../data/buttons";
 import SearchIcon from "../icons/SearchIcon";
+import { Categorie } from "../types/categories";
 
 type Props = {
   onAddProductClick: () => void;
   filter: string;
   setFilter: (filter: string) => void;
+  categoryProduct: Categorie[];
 };
-export const Header = ({ onAddProductClick, filter, setFilter }: Props) => {
+export const Header = ({
+  onAddProductClick,
+  filter,
+  setFilter,
+  categoryProduct,
+}: Props) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
+  };
+
+  const handleClickFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setFilter(e.currentTarget.innerText);
   };
   return (
     <header className="mt-6 w-full flex items-center justify-between gap-4 p-2 ">
       <div className="hidden md:flex items-center gap-2">
-        {Buttons.slice(0, 5).map((btn) => (
-          <button key={btn.id} className="btn-filter">
-            {btn.text}
+        {categoryProduct.slice(0, 5).map((cat) => (
+          <button
+            key={cat.id}
+            className="btn-filter"
+            onClick={handleClickFilter}
+          >
+            {cat.name}
           </button>
         ))}
       </div>
@@ -45,7 +61,11 @@ export const Header = ({ onAddProductClick, filter, setFilter }: Props) => {
               {btn.text}
             </button>
           ) : (
-            <button key={btn.id} className="hidden md:block btn-filter">
+            <button
+              key={btn.id}
+              className="hidden md:block btn-filter"
+              onClick={handleClickFilter}
+            >
               {btn.text}
             </button>
           )

@@ -9,7 +9,7 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, price } = body;
+    const { name, price, categories, image } = body;
 
     if (!name || typeof name !== "string") {
       return NextResponse.json({ error: "Nombre inválido" }, { status: 400 });
@@ -19,9 +19,13 @@ export async function POST(req: Request) {
     }
 
     const newProduct = {
-      id: Products.length + 1,
+      id: Date.now(),
       name,
       price,
+      categories: categories || "", 
+      image: image || "",
+      isNew: true,
+      createdAt: new Date().toISOString(),
     };
 
     Products.push(newProduct);
